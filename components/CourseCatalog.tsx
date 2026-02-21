@@ -5,117 +5,118 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { 
-  Sparkles, 
   ChevronRight, 
-  BarChart3, 
   Instagram, 
-  Twitter, 
   Zap, 
-  Smartphone, 
   Target, 
-  Play,
   TrendingUp,
-  Globe
+  Globe,
+  Video,
+  PenTool,
+  BarChart2,
+  Search
 } from "lucide-react";
 
-const CATEGORIES = ["All", "Instagram", "TikTok", "LinkedIn", "Brand AI"];
+const CATEGORIES = ["All Strategy", "Short-Form Video", "Brand Authority", "Ads & Scale"];
 
-const PLAYBOOKS = [
+const PROJECTS = [
   {
     id: 1,
-    title: "The 30-Day Viral Reel Lab",
-    description: "Master the exact hook-structure and visual pacing that triggered 1M+ views for top creators.",
-    difficulty: "Advanced",
-    reach: "100k+ Potential",
-    category: "Instagram",
-    icon: Instagram,
-    color: "from-purple-500/20 to-pink-500/20",
-    accent: "text-pink-500",
-    border: "group-hover:border-pink-500/50",
-    tags: ["Hooks", "CapCut", "Audio Trends"],
+    title: "Viral Aesthetic Overhaul",
+    description: "I redesigned the visual identity and content pillars for a luxury lifestyle brand, resulting in 2M+ organic impressions.",
+    result: "+420% Engagement",
+    category: "Short-Form Video",
+    icon: Video,
+    color: "bg-pink-50",
+    accent: "text-pink-600",
+    shadow: "hover:shadow-pink-100",
+    tags: ["Reels", "Art Direction", "Viral Hooks"],
   },
   {
     id: 2,
-    title: "TikTok Growth Engine",
-    description: "Learn to leverage the 'For You' page algorithm using high-retention storytelling and Lo-Fi visuals.",
-    difficulty: "Intermediate",
-    reach: "High Momentum",
-    category: "TikTok",
-    icon: Play,
-    color: "from-cyan-500/20 to-blue-500/20",
-    accent: "text-cyan-400",
-    border: "group-hover:border-cyan-400/50",
-    tags: ["Algorithms", "UGC", "Engagement"],
+    title: "Thought Leadership Engine",
+    description: "Turning founder expertise into high-signal LinkedIn content that builds authority and drives B2B inbound leads.",
+    result: "52 Quality Leads",
+    category: "Brand Authority",
+    icon: PenTool,
+    color: "bg-blue-50",
+    accent: "text-blue-600",
+    shadow: "hover:shadow-blue-100",
+    tags: ["Ghostwriting", "LinkedIn", "B2B"],
   },
   {
     id: 3,
-    title: "AI-Driven Copywriter",
-    description: "Train a custom AI model on your brand voice to generate 50+ viral-ready captions in seconds.",
-    difficulty: "Beginner",
-    reach: "Efficiency 10x",
-    category: "Brand AI",
-    icon: Sparkles,
-    color: "from-amber-400/20 to-orange-500/20",
-    accent: "text-amber-500",
-    border: "group-hover:border-amber-400/50",
-    tags: ["ChatGPT", "Prompts", "Branding"],
+    title: "The Growth Accelerator",
+    description: "A full-funnel social strategy combining paid amplification with community-first organic content.",
+    result: "12x ROI on Ads",
+    category: "Ads & Scale",
+    icon: BarChart2,
+    color: "bg-emerald-50",
+    accent: "text-emerald-600",
+    shadow: "hover:shadow-emerald-100",
+    tags: ["Meta Ads", "Scaling", "Retention"],
   },
   {
     id: 4,
-    title: "Authority Builder (B2B)",
-    description: "Turn your personal profile into a lead machine using high-signal thought leadership content.",
-    difficulty: "Advanced",
-    reach: "B2B Leads",
-    category: "LinkedIn",
+    title: "Community First Protocol",
+    description: "Strategy focused on high-retention engagement and DM automation to turn followers into a loyal 'cult' following.",
+    result: "85% Retention",
+    category: "All Strategy",
     icon: Target,
-    color: "from-blue-600/20 to-indigo-600/20",
-    accent: "text-blue-500",
-    border: "group-hover:border-blue-500/50",
-    tags: ["Writing", "Sales", "Networking"],
+    color: "bg-orange-50",
+    accent: "text-orange-600",
+    shadow: "hover:shadow-orange-100",
+    tags: ["Community", "DMs", "Loyalty"],
   }
 ];
 
 export function CourseCatalog() {
-  const [activeTab, setActiveTab] = useState("All");
+  const [activeTab, setActiveTab] = useState("All Strategy");
 
-  const filteredPlaybooks = activeTab === "All" 
-    ? PLAYBOOKS 
-    : PLAYBOOKS.filter(pb => pb.category === activeTab);
+  const filteredProjects = activeTab === "All Strategy" 
+    ? PROJECTS 
+    : PROJECTS.filter(pb => pb.category === activeTab);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-24 space-y-16">
+    <section className="max-w-7xl mx-auto px-6 py-32 space-y-20 bg-white">
       
       {/* --- HEADER --- */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-        <div className="space-y-4">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+        <div className="space-y-6">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2 text-cyan-400 font-black text-[10px] uppercase tracking-[0.3em]"
+            className="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-[0.2em]"
           >
             <Zap className="w-4 h-4 fill-current" />
-            Viral Blueprints
+            Proven Impact
           </motion.div>
-          <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-white leading-none italic">
-            CHOOSE YOUR <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">GROWTH LAB.</span>
+          <h2 className="text-5xl md:text-7xl font-black tracking-tight text-slate-900 leading-[0.9]">
+            RESULTS DRIVEN <br />
+            <span className="text-slate-400">NOT JUST POSTS.</span>
           </h2>
         </div>
-        <p className="max-w-md text-slate-400 font-medium leading-relaxed">
-          The exact frameworks, AI prompts, and scheduling patterns used by the world&apos;s most engaging brands.
-        </p>
+        <div className="max-w-md space-y-4">
+          <p className="text-lg text-slate-600 font-medium leading-relaxed">
+            I don&apos;t just manage accounts; I build digital assets. These playbooks represent the exact frameworks I use to scale brands from zero to viral.
+          </p>
+          <div className="flex items-center gap-4 text-blue-600 font-bold text-sm">
+             <span className="h-px w-8 bg-blue-600" />
+             View all 50+ case studies
+          </div>
+        </div>
       </div>
 
-      {/* --- MODERN FILTER BAR --- */}
-      <div className="flex flex-wrap items-center gap-3 border-b border-slate-800 pb-8">
+      {/* --- LIGHT MODE FILTER BAR --- */}
+      <div className="flex flex-wrap items-center gap-2 p-1.5 bg-slate-50 rounded-[2rem] w-fit border border-slate-100">
         {CATEGORIES.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveTab(cat)}
-            className={`px-6 py-3 text-xs font-black uppercase tracking-widest rounded-2xl transition-all duration-300 border ${
+            className={`px-8 py-3.5 text-xs font-bold rounded-[1.5rem] transition-all duration-300 ${
               activeTab === cat 
-              ? "bg-white text-slate-950 border-white shadow-[0_0_30px_rgba(255,255,255,0.15)]" 
-              : "text-slate-500 border-slate-800 hover:border-slate-600 hover:text-white"
+              ? "bg-white text-blue-600 shadow-sm border border-slate-100" 
+              : "text-slate-500 hover:text-slate-900"
             }`}
           >
             {cat}
@@ -124,60 +125,53 @@ export function CourseCatalog() {
       </div>
 
       {/* --- PLAYBOOK GRID --- */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <AnimatePresence mode="popLayout">
-          {filteredPlaybooks.map((pb) => (
+          {filteredProjects.map((pb) => (
             <motion.div
               layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
               key={pb.id}
-              className="group relative flex flex-col bg-slate-900/50 border border-slate-800 rounded-[2.5rem] overflow-hidden hover:border-white/20 transition-all duration-500"
+              className={`group flex flex-col bg-white border border-slate-100 rounded-[3rem] p-4 transition-all duration-500 shadow-sm ${pb.shadow} hover:-translate-y-2`}
             >
-              {/* Header Icon Section */}
-              <div className={`h-48 w-full bg-gradient-to-br ${pb.color} flex items-center justify-center relative`}>
-                <div className="absolute inset-0 bg-slate-950/20 backdrop-blur-[2px]" />
-                <div className="relative p-6 rounded-[2rem] bg-slate-950/80 shadow-2xl group-hover:scale-110 transition-transform duration-500 border border-white/5">
-                  <pb.icon className={`w-10 h-10 ${pb.accent}`} />
+              {/* Header Visual Section */}
+              <div className={`h-52 w-full ${pb.color} rounded-[2.5rem] flex items-center justify-center relative transition-transform duration-500 overflow-hidden`}>
+                <div className="absolute top-4 left-4">
+                  <Badge className="bg-white/80 backdrop-blur-md text-slate-900 border-none px-3 py-1 font-bold text-[10px] uppercase tracking-tighter shadow-sm">
+                    {pb.result}
+                  </Badge>
                 </div>
-                <Badge className="absolute top-6 right-6 bg-slate-950 text-white border-none px-3 py-1 font-black text-[9px] uppercase tracking-widest">
-                  {pb.reach}
-                </Badge>
+                <pb.icon className={`w-14 h-14 ${pb.accent} transition-transform duration-500 group-hover:scale-110`} />
               </div>
 
               {/* Content Section */}
-              <div className="p-8 flex-grow flex flex-col">
-                <div className="flex gap-4 mb-4">
-                  <span className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-cyan-400">
-                    <Smartphone className="w-3 h-3" /> {pb.category}
-                  </span>
-                  <span className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-slate-500">
-                    <TrendingUp className="w-3 h-3" /> {pb.difficulty}
+              <div className="p-6 flex-grow flex flex-col">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className={`text-[10px] font-bold uppercase tracking-widest ${pb.accent}`}>
+                    {pb.category}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-black text-white mb-3 group-hover:text-cyan-400 transition-colors leading-tight">
+                <h3 className="text-xl font-extrabold text-slate-900 mb-3 leading-tight group-hover:text-blue-600 transition-colors">
                   {pb.title}
                 </h3>
 
-                <p className="text-sm text-slate-400 leading-relaxed line-clamp-2 mb-6">
+                <p className="text-sm text-slate-500 leading-relaxed font-medium mb-6">
                   {pb.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mt-auto">
+                <div className="flex flex-wrap gap-2 mt-auto pb-6">
                   {pb.tags.map((tag) => (
-                    <span key={tag} className="text-[9px] px-2.5 py-1.5 rounded-lg bg-slate-800 text-slate-400 font-black uppercase tracking-tighter border border-slate-700/50">
-                      #{tag}
+                    <span key={tag} className="text-[9px] px-3 py-1.5 rounded-full bg-slate-50 text-slate-500 font-bold uppercase tracking-tight border border-slate-100">
+                      {tag}
                     </span>
                   ))}
                 </div>
-              </div>
 
-              {/* Action Button */}
-              <div className="px-8 pb-8">
-                <Button className="w-full h-14 bg-white text-slate-950 hover:bg-cyan-400 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all group/btn">
-                  Start Lab
+                <Button className="w-full h-14 bg-slate-900 text-white hover:bg-blue-600 rounded-2xl font-bold uppercase text-xs tracking-widest transition-all group/btn shadow-lg shadow-slate-100">
+                  Case Study
                   <ChevronRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                 </Button>
               </div>
@@ -187,10 +181,10 @@ export function CourseCatalog() {
       </div>
 
       {/* --- EMPTY STATE --- */}
-      {filteredPlaybooks.length === 0 && (
-        <div className="text-center py-32 rounded-[3rem] bg-slate-900/30 border-2 border-dashed border-slate-800">
-          <Globe className="w-12 h-12 text-slate-700 mx-auto mb-4" />
-          <p className="text-slate-500 font-black uppercase tracking-widest text-xs">No playbooks found in this territory.</p>
+      {filteredProjects.length === 0 && (
+        <div className="text-center py-24 rounded-[4rem] bg-slate-50 border border-slate-100">
+          <Search className="w-10 h-10 text-slate-300 mx-auto mb-4" />
+          <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">New Case Studies Loading...</p>
         </div>
       )}
     </section>
