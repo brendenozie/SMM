@@ -41,7 +41,7 @@ export default function SocialMediaDashboard() {
           <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.3)]">
             <Zap className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xl font-black tracking-tighter uppercase italic">Vibe<span className="text-cyan-400">Flow</span></span>
+          <span className="text-xl font-black tracking-tighter uppercase italic">S<span className="text-cyan-400">Flow</span></span>
         </div>
 
         <nav className="flex-grow space-y-2">

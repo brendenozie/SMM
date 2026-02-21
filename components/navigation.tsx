@@ -59,7 +59,7 @@ export function Navbar() {
             isScrolled ? "text-slate-900" : "text-slate-900 md:text-white lg:text-slate-900" 
             // Note: If your hero background is dark, we keep it white; if light, we go slate.
           )}>
-            Vibe<span className="text-blue-600">Flow</span>
+            S<span className="text-blue-600">MM</span>
           </span>
         </div>
 
@@ -119,7 +119,7 @@ export function Navbar() {
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between mb-12">
                   <span className="font-black text-xl tracking-tighter uppercase text-slate-900">
-                    Vibe<span className="text-blue-600">Flow</span>
+                    S<span className="text-blue-600">Flow</span>
                   </span>
                   <button 
                     onClick={() => setMobileMenuOpen(false)}

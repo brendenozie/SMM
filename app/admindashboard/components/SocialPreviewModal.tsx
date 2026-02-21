@@ -87,7 +87,7 @@ export default function SocialPreviewModal({ isOpen, onClose, image, caption }: 
                           <img src="https://i.pravatar.cc/100" alt="avatar" />
                         </div>
                      </div>
-                     <span className="text-[10px] font-black text-white">vibe.flow</span>
+                     <span className="text-[10px] font-black text-white">S.flow</span>
                    </div>
                    <MoreHorizontal className="w-4 h-4 text-white" />
                 </div>
@@ -109,7 +109,7 @@ export default function SocialPreviewModal({ isOpen, onClose, image, caption }: 
                   </div>
                   <p className="text-[10px] text-white font-black mb-1">1,248 likes</p>
                   <p className="text-[10px] text-slate-300 leading-tight">
-                    <span className="font-black text-white mr-2">vibe.flow</span>
+                    <span className="font-black text-white mr-2">S.flow</span>
                     {caption}
                   </p>
                   <p className="text-[8px] text-slate-500 mt-2 uppercase tracking-tighter">2 minutes ago</p>

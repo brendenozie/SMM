@@ -31,7 +31,7 @@ export function Footer() {
     <footer className="bg-white pt-32 pb-12 overflow-hidden relative">
       {/* Decorative Branding Watermark */}
       <div className="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 pointer-events-none opacity-[0.03] select-none">
-        <h1 className="text-[20rem] font-black italic tracking-tighter">VIBE</h1>
+        <h1 className="text-[20rem] font-black italic tracking-tighter">S</h1>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
