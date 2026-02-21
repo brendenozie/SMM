@@ -12,8 +12,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "GIFTECH",
-    template: "%s | GIFTECH",
+    default: "smm",
+    template: "%s | smm",
   },
   description:
     "Online learning platform offering coding courses, expert mentorship, and a supportive community to help you master programming skills and advance your tech career.",
@@ -28,42 +28,42 @@ export const metadata: Metadata = {
     "Developer Training",
     "Coding Tutorials",
   ],
-  authors: [{ name: "GIFTECHTeam" }],
-  creator: "GIFTECH",
-  publisher: "GIFTECH",
+  authors: [{ name: "smmTeam" }],
+  creator: "smm",
+  publisher: "smm",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://giftech.com"),
+  metadataBase: new URL("https://smm.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://giftech.com",
-    title: "GIFTECH",
+    url: "https://smm.com",
+    title: "smm",
     description:
       "Online learning platform offering coding courses, expert mentorship, and a supportive community to help you master programming skills and advance your tech career.",
-    siteName: "GIFTECH",
+    siteName: "smm",
     images: [
       {
-        url: "/giftech_ico.png",
+        url: "/smm_ico.png",
         width: 1200,
         height: 630,
-        alt: "GIFTECH",
+        alt: "smm",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "GIFTECH",
+    title: "smm",
     description:
       "",
-    images: ["/giftech_ico.png"],
-    creator: "@giftech",
+    images: ["/smm_ico.png"],
+    creator: "@smm",
   },
   robots: {
     index: true,
@@ -82,9 +82,9 @@ export const metadata: Metadata = {
     yahoo: "your-yahoo-verification-code",
   },
   icons: {
-    icon: "/giftech_ico.png",
-    shortcut: "/giftech_ico.png",
-    apple: "/giftech_ico.png",
+    icon: "/smm_ico.png",
+    shortcut: "/smm_ico.png",
+    apple: "/smm_ico.png",
   },
 };
 

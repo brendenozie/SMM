@@ -4,7 +4,7 @@ import nodemailer from "nodemailer";
 const SMTP_CONFIG = {
   host: process.env.SMTP_HOST || "smtp.hostinger.com",
   port: Number(process.env.SMTP_PORT) || 587,
-  user: process.env.SMTP_USER || "no-reply@giftech.com",
+  user: process.env.SMTP_USER || "no-reply@smm.com",
   pass: process.env.EMAIL_PASSWORD || "",
 };
 
@@ -31,7 +31,7 @@ const transporter = nodemailer.createTransport({
 // Email templates
 export const emailTemplates = {
   emailVerification: (firstName: string, verificationUrl: string) => ({
-    subject: "Verify Your Email - GIFTECH",
+    subject: "Verify Your Email - smm",
     html: `
       <!DOCTYPE html>
       <html>
@@ -52,13 +52,13 @@ export const emailTemplates = {
       <body>
         <div class="container">
           <div class="header">
-            <img src="${process.env.NEXT_PUBLIC_APP_URL}/logo-light.png" alt="GIFTECH" class="logo">
-            <h1>Welcome to GIFTECH!</h1>
+            <img src="${process.env.NEXT_PUBLIC_APP_URL}/logo-light.png" alt="smm" class="logo">
+            <h1>Welcome to smm!</h1>
           </div>
           
           <p>Hello ${firstName},</p>
           
-          <p>Thank you for registering with GIFTECH! To complete your registration and access your account, please verify your email address by clicking the button below:</p>
+          <p>Thank you for registering with smm! To complete your registration and access your account, please verify your email address by clicking the button below:</p>
           
           <div style="text-align: center;">
             <a href="${verificationUrl}" class="button">Verify Email Address</a>
@@ -72,7 +72,7 @@ export const emailTemplates = {
           <p style="word-break: break-all; color: #16a34a;">${verificationUrl}</p>
           
           <div class="footer">
-            <p>Best regards,<br>The GIFTECHTeam</p>
+            <p>Best regards,<br>The smmTeam</p>
             <p>If you have any questions, please contact our support team.</p>
           </div>
         </div>
@@ -82,7 +82,7 @@ export const emailTemplates = {
   }),
 
   passwordReset: (firstName: string, resetUrl: string) => ({
-    subject: "Reset Your Password - GIFTECH",
+    subject: "Reset Your Password - smm",
     html: `
       <!DOCTYPE html>
       <html>
@@ -103,13 +103,13 @@ export const emailTemplates = {
       <body>
         <div class="container">
           <div class="header">
-            <img src="${process.env.NEXT_PUBLIC_APP_URL}/logo-light.png" alt="GIFTECH" class="logo">
+            <img src="${process.env.NEXT_PUBLIC_APP_URL}/logo-light.png" alt="smm" class="logo">
             <h1>Reset Your Password</h1>
           </div>
           
           <p>Hello ${firstName},</p>
           
-          <p>We received a request to reset your password for your GIFTECHaccount. Click the button below to create a new password:</p>
+          <p>We received a request to reset your password for your smmaccount. Click the button below to create a new password:</p>
           
           <div style="text-align: center;">
             <a href="${resetUrl}" class="button">Reset Password</a>
@@ -125,7 +125,7 @@ export const emailTemplates = {
           <p style="word-break: break-all; color: #16a34a;">${resetUrl}</p>
           
           <div class="footer">
-            <p>Best regards,<br>The GIFTECHTeam</p>
+            <p>Best regards,<br>The smmTeam</p>
             <p>If you have any questions, please contact our support team.</p>
           </div>
         </div>
@@ -146,8 +146,8 @@ export const sendEmail = async ({
   html: string;
 }) => {
   try {
-    const fromName = process.env.SMTP_FROM_NAME || "GIFTECH";
-    const fromEmail = process.env.SMTP_FROM_EMAIL || "no-reply@giftech.com";
+    const fromName = process.env.SMTP_FROM_NAME || "smm";
+    const fromEmail = process.env.SMTP_FROM_EMAIL || "no-reply@smm.com";
 
     // console.log('📧 [Email Service] Preparing to send email...');
     // console.log('  To:', to);
