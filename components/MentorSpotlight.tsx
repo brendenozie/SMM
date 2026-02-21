@@ -3,112 +3,127 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Linkedin, Github, MessageSquare, Star, Quote } from "lucide-react";
+import { Linkedin, Instagram, Youtube, Star, Quote, Zap, ArrowUpRight } from "lucide-react";
 
-const MENTORS = [
+const ARCHITECTS = [
   {
-    name: "Dr. Amara Okafor",
-    role: "AI & Robotics Lead",
-    company: "Ex-Google DeepMind",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=500",
-    bio: "Helping students bridge the gap between theoretical math and autonomous machine movement.",
-    expertise: ["Neural Networks", "ROS2"],
+    name: "Jordan Vane",
+    role: "Viral Systems Lead",
+    credentials: "Built 10M+ Follower Brands",
+    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=400&h=500",
+    philosophy: "The algorithm isn't a mystery; it's a math problem with a creative solution.",
+    metrics: ["1.2B Total Reach", "Ex-Meta"],
   },
   {
-    name: "Benjamin Tetteh",
-    role: "Embedded Systems Architect",
-    company: "Senior Engineer at Tesla",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=500",
-    bio: "Focused on optimizing low-power systems for large scale IoT deployments in agriculture.",
-    expertise: ["C++", "Firmware"],
+    name: "Sienna Knight",
+    role: "AI Creative Director",
+    credentials: "Pioneer in Generative Media",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400&h=500",
+    philosophy: "AI won't replace creators, but creators using AI will replace everyone else.",
+    metrics: ["500+ AI Campaigns", "Brand Architect"],
   },
   {
-    name: "Sarah Mensah",
-    role: "Full-Stack Hardware Engineer",
-    company: "Founder @ AgriTech Solutions",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400&h=500",
-    bio: "Expert in building end-to-end products that connect physical sensors to web dashboards.",
-    expertise: ["React", "IoT Security"],
+    name: "Marcus Thorne",
+    role: "Growth Engineer",
+    credentials: "Founder @ Scale-X",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400&h=500",
+    philosophy: "Data tells you what happened. VibeFlow tells you what's going to happen next.",
+    metrics: ["$20M Ad-Spend Managed", "Growth Guru"],
   }
 ];
 
 export function MentorSpotlight() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section className="py-32 bg-[#020617] relative overflow-hidden">
+      {/* Background Decorative Element */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-cyan-500/5 to-transparent pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
         
         {/* --- HEADER --- */}
-        <div className="flex flex-col md:flex-row items-center justify-between mb-20 gap-8">
-          <div className="max-w-xl space-y-4 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em]">
-              <Star className="w-3 h-3 fill-current" />
-              Expert Guidance
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-              Learn from those <br />
-              <span className="text-blue-600">who have built it.</span>
+        <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-10">
+          <div className="max-w-2xl space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.3em]"
+            >
+              <Zap className="w-3.5 h-3.5 text-cyan-400 fill-current" />
+              The Architect Elite
+            </motion.div>
+            <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter italic leading-[0.8] uppercase">
+              MASTER THE <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">ATTENTION GAME.</span>
             </h2>
           </div>
-          <p className="text-slate-500 max-w-sm font-medium text-center md:text-left leading-relaxed">
-            Our mentors aren&apos;t just teachers; they are senior engineers from the world&apos;s leading tech hubs, dedicated to your success.
+          <p className="text-slate-400 max-w-sm font-medium leading-relaxed border-l-2 border-cyan-500/30 pl-6 mb-2">
+            Our architects aren&apos;t theorists. They are the tactical minds behind the internet&apos;s biggest growth stories.
           </p>
         </div>
 
-        {/* --- MENTOR CARDS --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {MENTORS.map((mentor, idx) => (
+        {/* --- ARCHITECT CARDS --- */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {ARCHITECTS.map((architect, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ delay: idx * 0.15, duration: 0.7 }}
               className="group relative"
             >
-              {/* Image Container */}
-              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden mb-6 shadow-2xl shadow-slate-200">
+              {/* Image & Main Card Container */}
+              <div className="relative aspect-[3/4] rounded-[4rem] overflow-hidden mb-8 border border-slate-800 transition-all duration-700 group-hover:border-cyan-500/50">
                 <Image 
-                  src={mentor.image} 
-                  alt={mentor.name} 
+                  src={architect.image} 
+                  alt={architect.name} 
                   fill 
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                  className="object-cover transition-all duration-1000 group-hover:scale-110 group-hover:rotate-1"
                 />
                 
-                {/* Glass Card Overlay (On Hover) */}
-                <div className="absolute inset-x-4 bottom-4 p-6 rounded-[2rem] bg-white/80 backdrop-blur-xl border border-white/50 translate-y-full group-hover:translate-y-0 transition-transform duration-500 shadow-xl">
-                  <div className="flex items-center gap-3 mb-3">
-                    <button className="p-2 rounded-xl bg-slate-900 text-white hover:bg-blue-600 transition-colors">
-                      <Linkedin className="w-4 h-4" />
-                    </button>
-                    <button className="p-2 rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition-colors">
-                      <MessageSquare className="w-4 h-4" />
-                    </button>
-                    <div className="ml-auto flex gap-1">
-                       {mentor.expertise.map(exp => (
-                         <span key={exp} className="text-[9px] font-bold text-blue-600 uppercase tracking-tighter bg-blue-50 px-2 py-1 rounded-md">
-                           {exp}
-                         </span>
-                       ))}
-                    </div>
-                  </div>
-                  <p className="text-xs text-slate-600 font-medium leading-relaxed italic">
-                    &quot;{mentor.bio}&quot;
+                {/* Dark Overlay with Impact Metrics */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90" />
+                
+                {/* Floating Metric Badges */}
+                <div className="absolute top-6 left-6 flex flex-col gap-2">
+                  {architect.metrics.map((metric, i) => (
+                    <span key={i} className="bg-slate-950/80 backdrop-blur-md border border-white/10 text-white px-3 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-widest shadow-2xl">
+                      {metric}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Hover Glass Quote Overlay */}
+                <div className="absolute inset-x-6 bottom-6 p-8 rounded-[3rem] bg-white text-slate-950 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out shadow-[0_30px_60px_-15px_rgba(255,255,255,0.3)]">
+                  <Quote className="w-8 h-8 text-cyan-500 mb-4 fill-current opacity-20" />
+                  <p className="text-sm font-black italic leading-tight mb-6">
+                    &quot;{architect.philosophy}&quot;
                   </p>
+                  <div className="flex gap-3">
+                    <button className="h-10 w-10 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-cyan-500 transition-colors">
+                      <Instagram className="w-4 h-4" />
+                    </button>
+                    <button className="h-10 w-10 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-red-600 transition-colors">
+                      <Youtube className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              {/* Name & Title */}
-              <div className="text-center md:text-left space-y-1 px-4">
-                <h3 className="text-2xl font-black text-slate-900 group-hover:text-blue-600 transition-colors">
-                  {mentor.name}
-                </h3>
-                <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
-                  <span className="text-sm font-bold text-slate-500 uppercase tracking-wide">
-                    {mentor.role}
+              {/* Identity Info */}
+              <div className="space-y-2 relative">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-3xl font-black text-white italic tracking-tighter uppercase group-hover:text-cyan-400 transition-colors">
+                    {architect.name}
+                  </h3>
+                  <ArrowUpRight className="w-6 h-6 text-slate-700 group-hover:text-white transition-all" />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] font-black text-cyan-500 uppercase tracking-[0.2em]">
+                    {architect.role}
                   </span>
-                  <div className="hidden md:block w-1 h-1 rounded-full bg-slate-300" />
-                  <span className="text-sm font-bold text-blue-500">
-                    {mentor.company}
+                  <span className="text-sm font-bold text-slate-500">
+                    {architect.credentials}
                   </span>
                 </div>
               </div>
@@ -116,25 +131,26 @@ export function MentorSpotlight() {
           ))}
         </div>
 
-        {/* --- OFFICE HOURS BANNER --- */}
+        {/* --- STRATEGY CALL --- */}
         <motion.div 
-          whileHover={{ scale: 1.01 }}
-          className="mt-20 p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 flex flex-col lg:flex-row items-center justify-between gap-8 group"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="mt-32 p-12 rounded-[4rem] bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-12 group hover:border-cyan-500/30 transition-all"
         >
-          <div className="flex items-center gap-6">
-            <div className="relative h-20 w-20 flex-shrink-0">
-               <div className="absolute inset-0 bg-blue-500 rounded-full animate-ping opacity-10" />
-               <div className="relative h-20 w-20 rounded-full bg-blue-100 flex items-center justify-center border-4 border-white shadow-inner">
-                  <Quote className="w-8 h-8 text-blue-600" />
+          <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+            <div className="relative h-24 w-24">
+               <div className="absolute inset-0 bg-cyan-400 rounded-full blur-2xl opacity-20 animate-pulse" />
+               <div className="relative h-24 w-24 rounded-full bg-cyan-500/10 border-2 border-cyan-500/20 flex items-center justify-center">
+                  <Star className="w-10 h-10 text-cyan-400 fill-current" />
                </div>
             </div>
             <div>
-              <p className="text-xl font-bold text-slate-900">Weekly Office Hours</p>
-              <p className="text-slate-500 font-medium">Get 1-on-1 feedback on your circuit designs and code every Thursday.</p>
+              <p className="text-3xl font-black text-white uppercase italic tracking-tighter">Inner Circle Access</p>
+              <p className="text-slate-500 font-medium text-lg">Join monthly group coaching calls with the Architect Elite.</p>
             </div>
           </div>
-          <button className="px-10 h-16 rounded-2xl bg-white border border-slate-200 font-black text-slate-900 hover:bg-slate-900 hover:text-white transition-all shadow-sm group-hover:shadow-lg">
-            Book a Session
+          <button className="w-full lg:w-auto px-12 h-20 rounded-[2rem] bg-white text-slate-950 font-black text-xl uppercase tracking-tighter italic hover:bg-cyan-400 hover:scale-105 transition-all shadow-2xl">
+            Secure Your Spot
           </button>
         </motion.div>
       </div>

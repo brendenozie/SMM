@@ -1,179 +1,196 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bot, Code2, Cpu, Sparkles, Timer, ChevronRight, BarChart, Search, LayoutGrid } from "lucide-react";
+import { 
+  Sparkles, 
+  ChevronRight, 
+  BarChart3, 
+  Instagram, 
+  Twitter, 
+  Zap, 
+  Smartphone, 
+  Target, 
+  Play,
+  TrendingUp,
+  Globe
+} from "lucide-react";
 
-const CATEGORIES = ["All", "Robotics", "Software", "Electronics", "AI"];
+const CATEGORIES = ["All", "Instagram", "TikTok", "LinkedIn", "Brand AI"];
 
-const COURSES = [
+const PLAYBOOKS = [
   {
     id: 1,
-    title: "Autonomous Rover Lab",
-    description: "Build a self-driving robot from scratch using LiDAR sensors and Python-based pathfinding.",
-    level: "Intermediate",
-    duration: "12 Weeks",
-    category: "Robotics",
-    icon: Bot,
-    color: "from-blue-500/20 to-cyan-500/20",
-    accent: "text-blue-600",
-    border: "group-hover:border-blue-400/50",
-    tags: ["Python", "LiDAR", "Hardware"],
+    title: "The 30-Day Viral Reel Lab",
+    description: "Master the exact hook-structure and visual pacing that triggered 1M+ views for top creators.",
+    difficulty: "Advanced",
+    reach: "100k+ Potential",
+    category: "Instagram",
+    icon: Instagram,
+    color: "from-purple-500/20 to-pink-500/20",
+    accent: "text-pink-500",
+    border: "group-hover:border-pink-500/50",
+    tags: ["Hooks", "CapCut", "Audio Trends"],
   },
   {
     id: 2,
-    title: "Full-Stack Web Engineering",
-    description: "Master modern web development by building complex, scalable applications with React and Next.js.",
-    level: "Beginner",
-    duration: "10 Weeks",
-    category: "Software",
-    icon: Code2,
-    color: "from-violet-500/20 to-fuchsia-500/20",
-    accent: "text-violet-600",
-    border: "group-hover:border-violet-400/50",
-    tags: ["Next.js", "TypeScript", "Tailwind"],
+    title: "TikTok Growth Engine",
+    description: "Learn to leverage the 'For You' page algorithm using high-retention storytelling and Lo-Fi visuals.",
+    difficulty: "Intermediate",
+    reach: "High Momentum",
+    category: "TikTok",
+    icon: Play,
+    color: "from-cyan-500/20 to-blue-500/20",
+    accent: "text-cyan-400",
+    border: "group-hover:border-cyan-400/50",
+    tags: ["Algorithms", "UGC", "Engagement"],
   },
   {
     id: 3,
-    title: "IoT & Smart Systems",
-    description: "Connect the world. Learn to bridge the gap between physical sensors and cloud data.",
-    level: "Advanced",
-    duration: "8 Weeks",
-    category: "Electronics",
-    icon: Cpu,
-    color: "from-emerald-500/20 to-teal-500/20",
-    accent: "text-emerald-600",
-    border: "group-hover:border-emerald-400/50",
-    tags: ["C++", "Arduino", "Cloud"],
+    title: "AI-Driven Copywriter",
+    description: "Train a custom AI model on your brand voice to generate 50+ viral-ready captions in seconds.",
+    difficulty: "Beginner",
+    reach: "Efficiency 10x",
+    category: "Brand AI",
+    icon: Sparkles,
+    color: "from-amber-400/20 to-orange-500/20",
+    accent: "text-amber-500",
+    border: "group-hover:border-amber-400/50",
+    tags: ["ChatGPT", "Prompts", "Branding"],
   },
   {
     id: 4,
-    title: "AI & Neural Networks",
-    description: "Introduction to machine learning. Teach your robots to recognize faces and objects.",
-    level: "Advanced",
-    duration: "14 Weeks",
-    category: "AI",
-    icon: Sparkles,
-    color: "from-amber-500/20 to-orange-500/20",
-    accent: "text-amber-600",
-    border: "group-hover:border-amber-400/50",
-    tags: ["TensorFlow", "Vision", "ML"],
+    title: "Authority Builder (B2B)",
+    description: "Turn your personal profile into a lead machine using high-signal thought leadership content.",
+    difficulty: "Advanced",
+    reach: "B2B Leads",
+    category: "LinkedIn",
+    icon: Target,
+    color: "from-blue-600/20 to-indigo-600/20",
+    accent: "text-blue-500",
+    border: "group-hover:border-blue-500/50",
+    tags: ["Writing", "Sales", "Networking"],
   }
 ];
 
 export function CourseCatalog() {
   const [activeTab, setActiveTab] = useState("All");
 
-  const filteredCourses = activeTab === "All" 
-    ? COURSES 
-    : COURSES.filter(course => course.category === activeTab);
+  const filteredPlaybooks = activeTab === "All" 
+    ? PLAYBOOKS 
+    : PLAYBOOKS.filter(pb => pb.category === activeTab);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16 space-y-12">
+    <section className="max-w-7xl mx-auto px-6 py-24 space-y-16">
       
-      {/* --- HEADER SECTION --- */}
-      <div className="text-center space-y-4 max-w-2xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-100 mb-4">
-          <Sparkles className="w-4 h-4" />
-          <span className="text-xs font-bold uppercase tracking-wider">Next-Gen Learning</span>
+      {/* --- HEADER --- */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+        <div className="space-y-4">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-2 text-cyan-400 font-black text-[10px] uppercase tracking-[0.3em]"
+          >
+            <Zap className="w-4 h-4 fill-current" />
+            Viral Blueprints
+          </motion.div>
+          <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-white leading-none italic">
+            CHOOSE YOUR <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">GROWTH LAB.</span>
+          </h2>
         </div>
-        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
-          Master the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">Future of Tech</span>
-        </h2>
-        <p className="text-lg text-slate-600 leading-relaxed">
-          Hands-on labs designed to bridge the gap between theory and industry-grade engineering.
+        <p className="max-w-md text-slate-400 font-medium leading-relaxed">
+          The exact frameworks, AI prompts, and scheduling patterns used by the world&apos;s most engaging brands.
         </p>
       </div>
 
-      {/* --- FILTER BAR --- */}
-      <div className="sticky top-4 z-20 flex justify-center">
-        <div className="flex items-center p-1.5 bg-white/70 backdrop-blur-xl border border-slate-200 shadow-lg rounded-2xl gap-1">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveTab(cat)}
-              className={`px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
-                activeTab === cat 
-                ? "bg-slate-900 text-white shadow-md" 
-                : "text-slate-600 hover:bg-slate-100"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* --- GRID SECTION --- */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {filteredCourses.map((course) => (
-          <Card 
-            key={course.id} 
-            className={`group relative overflow-hidden border-slate-200/60 bg-white/50 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] ${course.border}`}
+      {/* --- MODERN FILTER BAR --- */}
+      <div className="flex flex-wrap items-center gap-3 border-b border-slate-800 pb-8">
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveTab(cat)}
+            className={`px-6 py-3 text-xs font-black uppercase tracking-widest rounded-2xl transition-all duration-300 border ${
+              activeTab === cat 
+              ? "bg-white text-slate-950 border-white shadow-[0_0_30px_rgba(255,255,255,0.15)]" 
+              : "text-slate-500 border-slate-800 hover:border-slate-600 hover:text-white"
+            }`}
           >
-            {/* Subtle Background Glow */}
-            <div className={`absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br ${course.color} blur-3xl transition-opacity opacity-0 group-hover:opacity-100`} />
-
-            <CardHeader className="relative p-0">
-              <div className={`h-40 w-full bg-gradient-to-br ${course.color} flex items-center justify-center relative overflow-hidden`}>
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
-                
-                <div className="p-4 rounded-2xl bg-white/90 shadow-xl shadow-black/5 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                  <course.icon className={`w-10 h-10 ${course.accent}`} />
-                </div>
-
-                <Badge className="absolute top-4 right-4 bg-white/90 hover:bg-white text-slate-900 border-none backdrop-blur-md shadow-sm text-[10px] font-bold tracking-wider uppercase">
-                  {course.category}
-                </Badge>
-              </div>
-            </CardHeader>
-
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center gap-1.5 text-[11px] font-medium text-slate-500">
-                  <Timer className="w-3.5 h-3.5" /> {course.duration}
-                </div>
-                <div className="flex items-center gap-1.5 text-[11px] font-medium text-slate-500">
-                  <BarChart className="w-3.5 h-3.5" /> {course.level}
-                </div>
-              </div>
-
-              <CardTitle className="text-xl font-bold text-slate-800 group-hover:text-black transition-colors mb-3">
-                {course.title}
-              </CardTitle>
-
-              <p className="text-sm leading-relaxed text-slate-600 line-clamp-2 mb-6">
-                {course.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {course.tags.map((tag) => (
-                  <span key={tag} className="text-[10px] px-2.5 py-1 rounded-md bg-slate-100/80 text-slate-600 font-semibold tracking-tight border border-slate-200/50">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </CardContent>
-
-            <CardFooter className="p-6 pt-0">
-              <Button className="group/btn w-full bg-slate-900 text-white hover:bg-black transition-all duration-300 rounded-xl py-6 overflow-hidden relative">
-                <span className="relative z-10 flex items-center justify-center gap-2 text-sm">
-                  Explore Lab
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                </span>
-                <div className={`absolute inset-0 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 bg-gradient-to-r ${course.color} opacity-20`} />
-              </Button>
-            </CardFooter>
-          </Card>
+            {cat}
+          </button>
         ))}
       </div>
-      
+
+      {/* --- PLAYBOOK GRID --- */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <AnimatePresence mode="popLayout">
+          {filteredPlaybooks.map((pb) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              key={pb.id}
+              className="group relative flex flex-col bg-slate-900/50 border border-slate-800 rounded-[2.5rem] overflow-hidden hover:border-white/20 transition-all duration-500"
+            >
+              {/* Header Icon Section */}
+              <div className={`h-48 w-full bg-gradient-to-br ${pb.color} flex items-center justify-center relative`}>
+                <div className="absolute inset-0 bg-slate-950/20 backdrop-blur-[2px]" />
+                <div className="relative p-6 rounded-[2rem] bg-slate-950/80 shadow-2xl group-hover:scale-110 transition-transform duration-500 border border-white/5">
+                  <pb.icon className={`w-10 h-10 ${pb.accent}`} />
+                </div>
+                <Badge className="absolute top-6 right-6 bg-slate-950 text-white border-none px-3 py-1 font-black text-[9px] uppercase tracking-widest">
+                  {pb.reach}
+                </Badge>
+              </div>
+
+              {/* Content Section */}
+              <div className="p-8 flex-grow flex flex-col">
+                <div className="flex gap-4 mb-4">
+                  <span className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-cyan-400">
+                    <Smartphone className="w-3 h-3" /> {pb.category}
+                  </span>
+                  <span className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-slate-500">
+                    <TrendingUp className="w-3 h-3" /> {pb.difficulty}
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-black text-white mb-3 group-hover:text-cyan-400 transition-colors leading-tight">
+                  {pb.title}
+                </h3>
+
+                <p className="text-sm text-slate-400 leading-relaxed line-clamp-2 mb-6">
+                  {pb.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {pb.tags.map((tag) => (
+                    <span key={tag} className="text-[9px] px-2.5 py-1.5 rounded-lg bg-slate-800 text-slate-400 font-black uppercase tracking-tighter border border-slate-700/50">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="px-8 pb-8">
+                <Button className="w-full h-14 bg-white text-slate-950 hover:bg-cyan-400 rounded-2xl font-black uppercase text-xs tracking-[0.2em] transition-all group/btn">
+                  Start Lab
+                  <ChevronRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                </Button>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
       {/* --- EMPTY STATE --- */}
-      {filteredCourses.length === 0 && (
-        <div className="text-center py-20 border-2 border-dashed border-slate-200 rounded-3xl">
-          <p className="text-slate-400">No courses found in this category.</p>
+      {filteredPlaybooks.length === 0 && (
+        <div className="text-center py-32 rounded-[3rem] bg-slate-900/30 border-2 border-dashed border-slate-800">
+          <Globe className="w-12 h-12 text-slate-700 mx-auto mb-4" />
+          <p className="text-slate-500 font-black uppercase tracking-widest text-xs">No playbooks found in this territory.</p>
         </div>
       )}
     </section>
