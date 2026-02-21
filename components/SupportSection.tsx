@@ -7,13 +7,13 @@ import {
   Minus, 
   Truck, 
   GraduationCap, 
-  Terminal, 
   HelpCircle,
   MessageSquare,
   Cpu,
   Layers,
   ArrowRight,
-  ShieldCheck
+  ShieldCheck,
+  Search
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -33,7 +33,7 @@ const FAQS = [
   {
     category: "Infrastructure",
     question: "Do I need high-end hardware to run the AI?",
-    answer: "Negative. While a basic laptop is needed for staging, all heavy neural processing is offloaded to our VibeFlow Cloud Compute clusters. You get enterprise-grade GPU power regardless of your local machine.",
+    answer: "Negative. While a basic laptop is needed for staging, all heavy neural processing is offloaded to our SMM Cloud Compute clusters. You get enterprise-grade GPU power regardless of your local machine.",
     icon: Cpu
   },
   {
@@ -48,110 +48,113 @@ export function SupportSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-32 bg-[#020617] relative overflow-hidden">
-      {/* Background Ambient Pulses */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-600/5 blur-[120px] rounded-full" />
-      </div>
-
+    <section className="py-32 bg-white relative overflow-hidden">
+      {/* Background Subtle Gradient */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.03),transparent_40%)]" />
+      
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-20">
+        <div className="flex flex-col lg:flex-row gap-16 xl:gap-32">
           
-          {/* --- LEFT SIDE: THE COMMAND NAVIGATOR --- */}
-          <div className="lg:w-1/3 space-y-10">
-            <div className="space-y-6">
+          {/* --- LEFT SIDE: THE HELPDESK HERO --- */}
+          <div className="lg:w-[40%] space-y-12">
+            <div className="space-y-8">
               <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-cyan-400 text-[10px] font-black uppercase tracking-[0.3em]"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]"
               >
-                <HelpCircle className="w-3.5 h-3.5" />
-                Knowledge Base 2.0
+                <HelpCircle className="w-3.5 h-3.5 text-blue-600" />
+                Resource Intelligence
               </motion.div>
-              <h2 className="text-5xl md:text-6xl font-black text-white tracking-tighter italic uppercase leading-[0.85]">
-                SYSTEM <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">DIAGNOSTICS.</span>
+              
+              <h2 className="text-6xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase">
+                Got <span className="text-slate-300 italic">Questions?</span> <br />
+                We Have <span className="text-blue-600">Answers.</span>
               </h2>
-              <p className="text-slate-400 text-lg font-medium leading-relaxed max-w-sm">
-                Everything you need to know about the infrastructure, the vision, and the rollout.
+              
+              <p className="text-slate-500 text-xl font-medium leading-relaxed max-w-md">
+                Transparent insights into our infrastructure, vision, and global rollout strategy.
               </p>
             </div>
 
-            {/* Direct Patch Card */}
+            {/* Direct Connect Card */}
             <motion.div 
               whileHover={{ y: -5 }}
-              className="p-10 rounded-[3rem] bg-slate-900/50 backdrop-blur-xl border border-cyan-500/20 space-y-8 shadow-2xl relative group"
+              className="p-10 rounded-[3.5rem] bg-slate-900 space-y-8 shadow-2xl shadow-blue-900/20 relative group"
             >
-              <div className="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[3rem]" />
-              
-              <div className="flex items-center gap-5 relative z-10">
-                <div className="p-4 rounded-2xl bg-cyan-500 text-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+              <div className="flex items-center gap-5">
+                <div className="p-4 rounded-2xl bg-blue-600 text-white shadow-xl shadow-blue-500/40">
                   <MessageSquare className="w-6 h-6 fill-current" />
                 </div>
                 <div>
-                  <p className="font-black text-white uppercase tracking-tighter italic">Direct Patch</p>
-                  <p className="text-xs text-cyan-400 font-bold uppercase tracking-widest">Architects Online</p>
+                  <p className="font-black text-white uppercase tracking-tighter italic text-lg">Direct Channel</p>
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <p className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em]">Engineers Online</p>
+                  </div>
                 </div>
               </div>
               
-              <button className="w-full py-5 rounded-[1.5rem] bg-white text-slate-950 font-black italic text-sm uppercase tracking-tighter hover:bg-cyan-400 transition-all flex items-center justify-center gap-2 group/btn">
-                Chat with an Engineer
+              <button className="w-full py-6 rounded-2xl bg-white text-slate-900 font-black italic text-sm uppercase tracking-tighter hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center gap-3 group/btn">
+                Start Live Dialogue
                 <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
               </button>
 
               <div className="flex items-center gap-2 text-[9px] font-black text-slate-500 uppercase tracking-widest justify-center">
-                <ShieldCheck className="w-3 h-3" />
-                End-to-End Encrypted
+                <ShieldCheck className="w-3 h-3 text-blue-500" />
+                Identity Protected • SSL Encrypted
               </div>
             </motion.div>
           </div>
 
-          {/* --- RIGHT SIDE: THE DATA ACCORDION --- */}
-          <div className="lg:w-2/3 space-y-6">
+          {/* --- RIGHT SIDE: THE INTELLIGENT ACCORDION --- */}
+          <div className="lg:w-[60%] mt-12 lg:mt-0 space-y-4">
             {FAQS.map((faq, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 }}
                 className={cn(
-                  "rounded-[2rem] transition-all duration-500 border overflow-hidden",
+                  "rounded-[2.5rem] transition-all duration-500 border overflow-hidden",
                   openIndex === i 
-                    ? "border-cyan-500/40 bg-slate-900/80 shadow-[0_20px_40px_rgba(0,0,0,0.3)]" 
-                    : "border-white/5 bg-white/5 hover:border-white/10"
+                    ? "border-blue-100 bg-blue-50/30 shadow-xl shadow-blue-500/5" 
+                    : "border-slate-100 bg-white hover:border-slate-200"
                 )}
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                  className="w-full flex items-center justify-between p-8 text-left"
+                  className="w-full flex items-center justify-between p-8 text-left group"
                 >
-                  <div className="flex items-center gap-6">
+                  <div className="flex items-center gap-8">
                     <div className={cn(
-                      "p-3 rounded-xl transition-all duration-500",
+                      "w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-sm",
                       openIndex === i 
-                        ? "bg-cyan-500 text-slate-950 shadow-[0_0_15px_rgba(34,211,238,0.3)]" 
-                        : "bg-slate-950 text-slate-500"
+                        ? "bg-blue-600 text-white scale-110" 
+                        : "bg-slate-50 text-slate-400 group-hover:bg-slate-100"
                     )}>
                       <faq.icon className="w-6 h-6" />
                     </div>
                     <div>
                       <span className={cn(
-                        "text-[9px] font-black uppercase tracking-[0.2em] mb-1.5 block transition-colors",
-                        openIndex === i ? "text-cyan-400" : "text-slate-600"
+                        "text-[9px] font-black uppercase tracking-[0.3em] mb-2 block",
+                        openIndex === i ? "text-blue-600" : "text-slate-400"
                       )}>
                         {faq.category}
                       </span>
-                      <span className="text-xl font-black text-white italic tracking-tighter uppercase leading-none">
+                      <span className={cn(
+                        "text-2xl font-black tracking-tighter uppercase transition-colors",
+                        openIndex === i ? "text-slate-900" : "text-slate-400"
+                      )}>
                         {faq.question}
                       </span>
                     </div>
                   </div>
                   <div className={cn(
-                    "h-10 w-10 rounded-full border flex items-center justify-center transition-all duration-500",
+                    "h-12 w-12 rounded-full border flex items-center justify-center transition-all duration-500",
                     openIndex === i 
-                      ? "bg-cyan-500 border-cyan-500 text-slate-950 rotate-180" 
-                      : "border-white/10 text-slate-600"
+                      ? "bg-slate-900 border-slate-900 text-white rotate-180 shadow-lg shadow-slate-900/20" 
+                      : "border-slate-100 text-slate-400"
                   )}>
                     {openIndex === i ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
                   </div>
@@ -163,12 +166,12 @@ export function SupportSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <div className="px-10 pb-10 pt-0 ml-[4.5rem]">
-                        <div className="bg-slate-950/50 rounded-3xl p-8 border-l-4 border-cyan-500">
-                          <p className="text-slate-300 text-lg leading-relaxed font-medium italic">
-                            {faq.answer}
+                      <div className="px-8 pb-10 ml-20 md:ml-24">
+                        <div className="bg-white/80 rounded-3xl p-8 border border-blue-100 shadow-sm">
+                          <p className="text-slate-600 text-lg leading-relaxed font-medium italic">
+                            &quot;{faq.answer}&quot;
                           </p>
                         </div>
                       </div>
@@ -177,6 +180,14 @@ export function SupportSection() {
                 </AnimatePresence>
               </motion.div>
             ))}
+            
+            {/* Search Suggestion */}
+            <div className="pt-8 flex justify-center lg:justify-start">
+               <button className="flex items-center gap-3 text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-blue-600 transition-colors">
+                 <Search className="w-4 h-4" />
+                 Can&apos;t find what you&apos;re looking for? Browse full documentation
+               </button>
+            </div>
           </div>
         </div>
       </div>

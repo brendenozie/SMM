@@ -10,6 +10,8 @@ import {
   Layers, Send, Image as ImageIcon
 } from "lucide-react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import ContentLibrary from "./components/ContentLibrary";
+import SocialPreviewModal from "./components/SocialPreviewModal";
 
 export default function SocialMediaDashboard() {
   // --- STATE ---
@@ -85,7 +87,7 @@ export default function SocialMediaDashboard() {
                 className="pl-10 pr-4 py-2.5 bg-slate-800/50 border border-slate-700 rounded-xl text-sm w-64 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all"
               />
             </div>
-            <button className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-xl font-black text-sm flex items-center gap-2 transition-all shadow-lg shadow-cyan-500/20 active:scale-95">
+            <button onClick={() => setIsModalOpen(true)} className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-6 py-2.5 rounded-xl font-black text-sm flex items-center gap-2 transition-all shadow-lg shadow-cyan-500/20 active:scale-95">
               <Plus className="w-4 h-4" /> Create Post
             </button>
           </div>
@@ -132,6 +134,10 @@ export default function SocialMediaDashboard() {
           </div>
         )}
 
+        {activeTab === "Content Library" && (
+          <ContentLibrary />
+        )}
+
         {/* --- VIEW: CONTENT CALENDAR --- */}
         {activeTab === "Content Calendar" && (
           <div className="space-y-6">
@@ -171,6 +177,9 @@ export default function SocialMediaDashboard() {
         )}
 
       </main>
+
+        {isModalOpen && (
+            <SocialPreviewModal onClose={() => setIsModalOpen(false)} isOpen={isModalOpen} image={""} caption={""}    />      )}
     </div>
   );
 }

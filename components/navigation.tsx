@@ -49,7 +49,7 @@ export function Navbar() {
           : "bg-transparent border border-transparent"
       )}>
         
-        {/* --- LOGO: VIBEFLOW --- */}
+        {/* --- LOGO: SMM --- */}
         <div className="flex items-center gap-3 cursor-pointer group">
           <div className="h-11 w-11 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-200 group-hover:rotate-6 transition-transform duration-300">
             <Zap className="w-6 h-6 text-white fill-current" />

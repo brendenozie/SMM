@@ -8,11 +8,10 @@ import {
   Sparkles, 
   ArrowRight, 
   Terminal, 
-  Eye, 
-  BarChart3, 
   Share2,
   Cpu,
-  TrendingUp
+  TrendingUp,
+  Plus
 } from "lucide-react";
 
 const EXPERTISE_TRACKS = [
@@ -20,124 +19,137 @@ const EXPERTISE_TRACKS = [
     title: "AI Narrative Design",
     tagline: "Unbreakable Storytelling",
     icon: Sparkles,
-    color: "cyan",
+    color: "text-blue-600",
+    bg: "bg-blue-50",
     stats: "24 Blueprints",
     difficulty: "Elite",
-    description: "Use LLMs to engineer psychological hooks and narrative arcs that force viewers to watch until the very last second."
+    description: "Using LLMs to engineer psychological hooks and narrative arcs that sustain engagement throughout the entire viewer journey."
   },
   {
     title: "Algorithmic Arbitrage",
     tagline: "The Science of Reach",
     icon: TrendingUp,
-    color: "purple",
+    color: "text-purple-600",
+    bg: "bg-purple-50",
     stats: "15 Strategems",
     difficulty: "Master",
-    description: "Decode real-time platform updates. Master the math behind retention, CTR, and the 'viral threshold' across all platforms."
+    description: "Mastering the math behind retention, CTR, and the 'viral threshold' through real-time platform data and trend analysis."
   },
   {
     title: "Automated Media Engines",
     tagline: "Scale to Infinity",
     icon: Cpu,
-    color: "blue",
+    color: "text-emerald-600",
+    bg: "bg-emerald-50",
     stats: "10 Workflows",
     difficulty: "Advanced",
-    description: "Build a 24/7 content factory. Learn to chain AI tools to script, edit, and post while you sleep."
+    description: "Chaining AI tools to script, edit, and post on a 24/7 cycle, allowing your brand to remain omnipresent without manual effort."
   }
 ];
 
 export function ExpertiseSection() {
   return (
-    <section className="py-32 bg-[#020617] relative overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent" />
-      <div className="absolute top-1/2 -right-20 w-80 h-80 bg-blue-600/10 blur-[120px] rounded-full" />
+    <section className="py-32 bg-white relative overflow-hidden">
+      {/* Aesthetic Background Accents */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:40px_40px] opacity-30" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-50/50 blur-[120px] rounded-full pointer-events-none" />
 
       {/* --- HEADER --- */}
-      <div className="container mx-auto px-6 mb-20">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+      <div className="container mx-auto px-6 mb-24 relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
           <div className="space-y-6 max-w-2xl">
             <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-black uppercase tracking-[0.3em]"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-600 text-[10px] font-bold uppercase tracking-widest"
             >
-              <Zap className="w-3.5 h-3.5 fill-current" />
-              The Alpha Skillset
+              <Zap className="w-3.5 h-3.5 text-blue-600 fill-current" />
+              Technical Core
             </motion.div>
-            <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter italic leading-[0.85] uppercase">
-              SKILLS THAT <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">BREAK THE MATRIX.</span>
+            <h2 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter leading-[0.85]">
+              FUTURE-PROOF <br />
+              <span className="text-blue-600">CAPABILITIES.</span>
             </h2>
           </div>
-          <p className="text-slate-400 max-w-md text-lg font-medium leading-relaxed border-l-2 border-white/10 pl-8">
-            The old playbook is dead. We provide the technical and psychological infrastructure to scale influence at the speed of light.
+          <p className="text-slate-500 max-w-md text-xl font-medium leading-relaxed border-l-4 border-blue-600 pl-8 pb-2">
+            The social landscape has shifted. We provide the infrastructure to dominate the attention economy using the latest in AI and data science.
           </p>
         </div>
       </div>
 
       {/* --- GRID --- */}
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {EXPERTISE_TRACKS.map((track, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.15, duration: 0.8 }}
+              transition={{ delay: idx * 0.1, duration: 0.6 }}
+              className="h-full"
             >
-              <Card className="group relative p-10 h-full bg-slate-900/40 backdrop-blur-xl border-slate-800 overflow-hidden transition-all duration-500 hover:border-cyan-500/50 hover:shadow-[0_0_50px_-12px_rgba(34,211,238,0.3)]">
-                {/* Background Icon Watermark */}
-                <track.icon className="absolute -right-12 -top-12 w-56 h-56 text-white/5 -rotate-12 transition-transform group-hover:rotate-0 group-hover:scale-110 duration-1000" />
+              <Card className="group relative p-12 h-full bg-white border-slate-100 overflow-hidden transition-all duration-500 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.08)] hover:-translate-y-2">
                 
+                {/* Decorative Number */}
+                <span className="absolute top-8 right-12 text-7xl font-black text-slate-50 group-hover:text-blue-50 transition-colors duration-500 select-none">
+                  0{idx + 1}
+                </span>
+
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex justify-between items-start mb-12">
-                    <div className="p-5 rounded-[2rem] bg-slate-950 border border-slate-800 text-cyan-400 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(34,211,238,0.4)]">
+                  <div className="flex justify-between items-start mb-16">
+                    <div className={`p-5 rounded-3xl ${track.bg} ${track.color} transition-all duration-500 group-hover:scale-110 shadow-sm`}>
                       <track.icon className="w-10 h-10" />
                     </div>
-                    <Badge className="bg-white/5 hover:bg-white/10 border-white/10 text-white font-black text-[9px] uppercase tracking-widest px-3 py-1">
+                    <Badge className="bg-slate-900 text-white font-bold text-[9px] uppercase tracking-widest px-4 py-1.5 rounded-full">
                       {track.difficulty}
                     </Badge>
                   </div>
 
-                  <div className="space-y-4 mb-10">
-                    <p className="text-[10px] font-black uppercase tracking-[0.25em] text-cyan-500/80">
+                  <div className="space-y-4 mb-12">
+                    <p className={`text-[10px] font-black uppercase tracking-[0.2em] ${track.color}`}>
                       {track.tagline}
                     </p>
-                    <h3 className="text-3xl font-black text-white italic tracking-tighter group-hover:text-cyan-400 transition-colors">
+                    <h3 className="text-3xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors">
                       {track.title}
                     </h3>
-                    <p className="text-slate-400 leading-relaxed text-base font-medium">
+                    <p className="text-slate-500 leading-relaxed text-lg font-medium">
                       {track.description}
                     </p>
                   </div>
 
-                  <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
+                  {/* Stats Bar */}
+                  <div className="mt-auto pt-8 border-t border-slate-50 flex items-center justify-between">
                     <div className="flex items-center gap-6">
-                      <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
-                        <Terminal className="w-4 h-4 text-cyan-500" />
+                      <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                        <Terminal className="w-4 h-4 text-blue-600" />
                         {track.stats}
                       </div>
-                      <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
-                        <Share2 className="w-4 h-4 text-cyan-500" />
-                        Platform Ready
+                      <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                        <Share2 className="w-4 h-4 text-blue-600" />
+                        Cross-Platform
                       </div>
                     </div>
-                    <motion.div 
-                      whileHover={{ x: 5 }}
-                      className="opacity-0 group-hover:opacity-100 transition-all duration-300"
-                    >
-                       <ArrowRight className="w-6 h-6 text-cyan-400" />
-                    </motion.div>
+                    
+                    <div className={`h-10 w-10 rounded-full ${track.bg} ${track.color} flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300`}>
+                       <Plus className="w-6 h-6" />
+                    </div>
                   </div>
                 </div>
 
-                {/* Bottom Accent Glow */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+                {/* Left Edge Accent */}
+                <div className={`absolute left-0 top-0 w-1 h-full ${track.color.replace('text', 'bg')} scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top`} />
               </Card>
             </motion.div>
           ))}
         </div>
+      </div>
+
+      {/* --- FOOTER DECOR --- */}
+      <div className="container mx-auto px-6 mt-20 text-center">
+        <p className="text-slate-300 text-[10px] font-black uppercase tracking-[0.5em]">
+          All Systems Verified • 2026 Engagement Standards
+        </p>
       </div>
     </section>
   );

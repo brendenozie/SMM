@@ -3,127 +3,134 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Linkedin, Instagram, Youtube, Star, Quote, Zap, ArrowUpRight } from "lucide-react";
+import { Linkedin, Instagram, Youtube, Star, Quote, Zap, ArrowUpRight, Plus } from "lucide-react";
 
-const ARCHITECTS = [
+const COLLECTIVE = [
   {
     name: "Jordan Vane",
     role: "Viral Systems Lead",
-    credentials: "Built 10M+ Follower Brands",
+    credentials: "Ex-Meta / 10M+ Follower Growth",
     image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=400&h=500",
     philosophy: "The algorithm isn't a mystery; it's a math problem with a creative solution.",
-    metrics: ["1.2B Total Reach", "Ex-Meta"],
+    metrics: ["1.2B Total Reach", "Strategy Architect"],
+    accent: "bg-blue-600",
   },
   {
     name: "Sienna Knight",
-    role: "AI Creative Director",
-    credentials: "Pioneer in Generative Media",
+    role: "Creative Director",
+    credentials: "Pioneer in High-Aesthetic Media",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400&h=500",
-    philosophy: "AI won't replace creators, but creators using AI will replace everyone else.",
-    metrics: ["500+ AI Campaigns", "Brand Architect"],
+    philosophy: "Authenticity is the new luxury. We don't just create content; we build culture.",
+    metrics: ["500+ Campaigns", "Creative Lead"],
+    accent: "bg-pink-600",
   },
   {
     name: "Marcus Thorne",
     role: "Growth Engineer",
-    credentials: "Founder @ Scale-X",
+    credentials: "Founder @ Scale-X Labs",
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400&h=500",
-    philosophy: "Data tells you what happened. VibeFlow tells you what's going to happen next.",
-    metrics: ["$20M Ad-Spend Managed", "Growth Guru"],
+    philosophy: "Data tells you what happened. Human intuition tells you what happens next.",
+    metrics: ["$20M Spend Managed", "ROI Specialist"],
+    accent: "bg-emerald-600",
   }
 ];
 
 export function MentorSpotlight() {
   return (
-    <section className="py-32 bg-[#020617] relative overflow-hidden">
-      {/* Background Decorative Element */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-cyan-500/5 to-transparent pointer-events-none" />
+    <section className="py-32 bg-white relative overflow-hidden">
+      {/* Structural Accent Lines */}
+      <div className="absolute inset-0 flex justify-between px-6 pointer-events-none opacity-5">
+        <div className="w-px h-full bg-slate-900" />
+        <div className="w-px h-full bg-slate-900 hidden md:block" />
+        <div className="w-px h-full bg-slate-900 hidden md:block" />
+        <div className="w-px h-full bg-slate-900" />
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         
         {/* --- HEADER --- */}
-        <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-10">
-          <div className="max-w-2xl space-y-6">
+        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mb-24 gap-12">
+          <div className="max-w-3xl space-y-6">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.3em]"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-900 text-[10px] font-bold uppercase tracking-widest"
             >
-              <Zap className="w-3.5 h-3.5 text-cyan-400 fill-current" />
-              The Architect Elite
+              <Zap className="w-3.5 h-3.5 text-blue-600 fill-current" />
+              The Strategic Collective
             </motion.div>
-            <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter italic leading-[0.8] uppercase">
-              MASTER THE <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">ATTENTION GAME.</span>
+            <h2 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter leading-[0.8] uppercase">
+              THINKERS <br />
+              <span className="text-slate-300 italic">& MAKERS.</span>
             </h2>
           </div>
-          <p className="text-slate-400 max-w-sm font-medium leading-relaxed border-l-2 border-cyan-500/30 pl-6 mb-2">
-            Our architects aren&apos;t theorists. They are the tactical minds behind the internet&apos;s biggest growth stories.
-          </p>
+          <div className="max-w-sm space-y-4">
+            <p className="text-slate-500 font-medium leading-relaxed text-lg italic border-l-4 border-blue-600 pl-6">
+              &quot;We aren&apos;t just managers. We are the tactical minds behind the internet&apos;s most resilient growth stories.&quot;
+            </p>
+          </div>
         </div>
 
-        {/* --- ARCHITECT CARDS --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {ARCHITECTS.map((architect, idx) => (
+        {/* --- COLLECTIVE CARDS --- */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {COLLECTIVE.map((member, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.15, duration: 0.7 }}
+              transition={{ delay: idx * 0.15, duration: 0.8 }}
               className="group relative"
             >
-              {/* Image & Main Card Container */}
-              <div className="relative aspect-[3/4] rounded-[4rem] overflow-hidden mb-8 border border-slate-800 transition-all duration-700 group-hover:border-cyan-500/50">
+              {/* Image & Card Container */}
+              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden mb-10 transition-all duration-700 shadow-xl shadow-slate-200 group-hover:shadow-2xl group-hover:shadow-blue-100 group-hover:-translate-y-2">
                 <Image 
-                  src={architect.image} 
-                  alt={architect.name} 
+                  src={member.image} 
+                  alt={member.name} 
                   fill 
-                  className="object-cover transition-all duration-1000 group-hover:scale-110 group-hover:rotate-1"
+                  className="object-cover transition-all duration-1000 group-hover:scale-105"
                 />
                 
-                {/* Dark Overlay with Impact Metrics */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90" />
-                
-                {/* Floating Metric Badges */}
-                <div className="absolute top-6 left-6 flex flex-col gap-2">
-                  {architect.metrics.map((metric, i) => (
-                    <span key={i} className="bg-slate-950/80 backdrop-blur-md border border-white/10 text-white px-3 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-widest shadow-2xl">
+                {/* Floating Metric Badges (Top) */}
+                <div className="absolute top-6 left-6 flex flex-wrap gap-2 pr-6">
+                  {member.metrics.map((metric, i) => (
+                    <span key={i} className="bg-white/90 backdrop-blur-md text-slate-900 px-4 py-2 rounded-2xl text-[9px] font-black uppercase tracking-widest shadow-sm">
                       {metric}
                     </span>
                   ))}
                 </div>
 
-                {/* Hover Glass Quote Overlay */}
-                <div className="absolute inset-x-6 bottom-6 p-8 rounded-[3rem] bg-white text-slate-950 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out shadow-[0_30px_60px_-15px_rgba(255,255,255,0.3)]">
-                  <Quote className="w-8 h-8 text-cyan-500 mb-4 fill-current opacity-20" />
-                  <p className="text-sm font-black italic leading-tight mb-6">
-                    &quot;{architect.philosophy}&quot;
-                  </p>
-                  <div className="flex gap-3">
-                    <button className="h-10 w-10 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-cyan-500 transition-colors">
-                      <Instagram className="w-4 h-4" />
-                    </button>
-                    <button className="h-10 w-10 rounded-full bg-slate-900 text-white flex items-center justify-center hover:bg-red-600 transition-colors">
-                      <Youtube className="w-4 h-4" />
-                    </button>
+                {/* Bottom Identity Block (Visible on Hover) */}
+                <div className="absolute inset-x-4 bottom-4 p-8 rounded-[2.5rem] bg-white opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out shadow-2xl">
+                  <div className="flex justify-between items-start mb-6">
+                     <Quote className="w-10 h-10 text-slate-100 fill-current absolute -top-2 -left-2" />
+                     <p className="text-base font-bold text-slate-800 leading-snug relative z-10">
+                        {member.philosophy}
+                     </p>
+                  </div>
+                  <div className="flex gap-4 border-t border-slate-50 pt-6">
+                    <Linkedin className="w-5 h-5 text-slate-400 hover:text-blue-600 cursor-pointer transition-colors" />
+                    <Instagram className="w-5 h-5 text-slate-400 hover:text-pink-600 cursor-pointer transition-colors" />
                   </div>
                 </div>
               </div>
 
-              {/* Identity Info */}
-              <div className="space-y-2 relative">
+              {/* Text Info (Static) */}
+              <div className="space-y-3 px-2">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-3xl font-black text-white italic tracking-tighter uppercase group-hover:text-cyan-400 transition-colors">
-                    {architect.name}
+                  <h3 className="text-4xl font-black text-slate-900 tracking-tighter uppercase leading-none">
+                    {member.name}
                   </h3>
-                  <ArrowUpRight className="w-6 h-6 text-slate-700 group-hover:text-white transition-all" />
+                  <div className={`h-10 w-10 rounded-full ${member.accent} flex items-center justify-center text-white rotate-45 group-hover:rotate-0 transition-transform duration-500`}>
+                    <Plus className="w-6 h-6" />
+                  </div>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <span className="text-[10px] font-black text-cyan-500 uppercase tracking-[0.2em]">
-                    {architect.role}
+                  <span className="text-xs font-black text-blue-600 uppercase tracking-widest">
+                    {member.role}
                   </span>
-                  <span className="text-sm font-bold text-slate-500">
-                    {architect.credentials}
+                  <span className="text-sm font-bold text-slate-400">
+                    {member.credentials}
                   </span>
                 </div>
               </div>
@@ -131,28 +138,32 @@ export function MentorSpotlight() {
           ))}
         </div>
 
-        {/* --- STRATEGY CALL --- */}
+        {/* --- PREMIUM CTA --- */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="mt-32 p-12 rounded-[4rem] bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-12 group hover:border-cyan-500/30 transition-all"
+          className="mt-32 p-1.5 rounded-[4rem] bg-slate-50 border border-slate-100"
         >
-          <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
-            <div className="relative h-24 w-24">
-               <div className="absolute inset-0 bg-cyan-400 rounded-full blur-2xl opacity-20 animate-pulse" />
-               <div className="relative h-24 w-24 rounded-full bg-cyan-500/10 border-2 border-cyan-500/20 flex items-center justify-center">
-                  <Star className="w-10 h-10 text-cyan-400 fill-current" />
-               </div>
+          <div className="bg-slate-900 rounded-[3.8rem] p-12 md:p-20 flex flex-col lg:flex-row items-center justify-between gap-12 group transition-all overflow-hidden relative">
+            {/* Background Decor */}
+            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-blue-600 blur-[120px] opacity-20 group-hover:opacity-40 transition-opacity" />
+            
+            <div className="flex flex-col md:flex-row items-center gap-10 text-center md:text-left relative z-10">
+                <div className="h-24 w-24 rounded-[2.5rem] bg-white/5 border border-white/10 flex items-center justify-center shadow-inner">
+                   <Star className="w-10 h-10 text-blue-400 fill-current" />
+                </div>
+                <div className="space-y-2">
+                  <h4 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none">Direct Partner Access</h4>
+                  <p className="text-slate-400 font-medium text-lg max-w-md">Reserve a strategy session with our senior collective members.</p>
+                </div>
             </div>
-            <div>
-              <p className="text-3xl font-black text-white uppercase italic tracking-tighter">Inner Circle Access</p>
-              <p className="text-slate-500 font-medium text-lg">Join monthly group coaching calls with the Architect Elite.</p>
-            </div>
+
+            <button className="w-full lg:w-auto px-16 h-24 rounded-[2.5rem] bg-white text-slate-900 font-black text-xl uppercase tracking-tighter hover:bg-blue-600 hover:text-white transition-all shadow-[0_20px_40px_rgba(0,0,0,0.3)] flex items-center justify-center gap-3">
+              Book a Call <ArrowUpRight className="w-6 h-6" />
+            </button>
           </div>
-          <button className="w-full lg:w-auto px-12 h-20 rounded-[2rem] bg-white text-slate-950 font-black text-xl uppercase tracking-tighter italic hover:bg-cyan-400 hover:scale-105 transition-all shadow-2xl">
-            Secure Your Spot
-          </button>
         </motion.div>
+
       </div>
     </section>
   );

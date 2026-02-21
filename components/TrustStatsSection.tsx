@@ -1,136 +1,140 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe2, Users2, Rocket, Trophy, ArrowUpRight, Zap, Star } from "lucide-react";
+import { Globe2, Users2, Rocket, ArrowUpRight, Zap, Star, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const STATS = [
-  { label: "Viral Reach", value: 12, suffix: "B+", icon: Users2, color: "from-cyan-400 to-blue-500", glow: "shadow-cyan-500/20" },
-  { label: "Success Rate", value: 98, suffix: "%", icon: Zap, color: "from-purple-400 to-pink-500", glow: "shadow-purple-500/20" },
-  { label: "Creator ROI", value: 450, suffix: "%", icon: Rocket, color: "from-blue-400 to-indigo-500", glow: "shadow-blue-500/20" },
-  { label: "Global Nodes", value: 42, suffix: "", icon: Globe2, color: "from-emerald-400 to-teal-500", glow: "shadow-emerald-500/20" },
+  { label: "Viral Reach", value: 12, suffix: "B+", icon: Users2, color: "bg-blue-600", lightBg: "bg-blue-50" },
+  { label: "Success Rate", value: 98, suffix: "%", icon: Zap, color: "bg-amber-500", lightBg: "bg-amber-50" },
+  { label: "Creator ROI", value: 450, suffix: "%", icon: Rocket, color: "bg-purple-600", lightBg: "bg-purple-50" },
+  { label: "Global Nodes", value: 42, suffix: "", icon: Globe2, color: "bg-emerald-600", lightBg: "bg-emerald-50" },
 ];
 
 const BRANDS = ["TIKTOK", "META", "NETFLIX", "YOUTUBE", "DISNEY+", "SPOTIFY", "ADOBE", "OPENAI"];
 
 export function TrustStatsSection() {
   return (
-    <section className="py-32 bg-[#020617] relative overflow-hidden">
-      {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-500/5 rounded-full blur-[120px]" />
-      </div>
-
+    <section className="py-32 bg-white relative overflow-hidden">
+      {/* Structural Background Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]" />
+      
       <div className="container mx-auto px-6 relative z-10">
         
-        {/* --- KINETIC BRAND MARQUEE --- */}
-        <div className="mb-32">
+        {/* --- HEADER & MARQUEE --- */}
+        <div className="text-center mb-24 space-y-8">
           <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="flex items-center justify-center gap-3 mb-12"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.3em]"
           >
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-cyan-500/50" />
-            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-cyan-500/60">
-              TRUSTED BY THE ARCHITECTS OF ATTENTION
-            </p>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-cyan-500/50" />
+            <ShieldCheck className="w-3 h-3 text-blue-400" />
+            The Industry Standard
           </motion.div>
           
-          <div className="relative flex overflow-hidden">
+          <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-none uppercase">
+            TRUSTED BY THE <br />
+            <span className="text-slate-300 italic">NEW ELITE.</span>
+          </h2>
+
+          <div className="relative mt-16 flex overflow-hidden border-y border-slate-100 py-10 bg-white/50 backdrop-blur-sm">
             <motion.div 
               animate={{ x: ["0%", "-50%"] }}
-              transition={{ ease: "linear", duration: 15, repeat: Infinity }}
-              className="flex whitespace-nowrap gap-20 items-center py-4"
+              transition={{ ease: "linear", duration: 25, repeat: Infinity }}
+              className="flex whitespace-nowrap gap-24 items-center"
             >
               {[...BRANDS, ...BRANDS].map((brand, i) => (
                 <span 
                   key={i} 
-                  className="text-4xl md:text-6xl font-black text-white/5 hover:text-white transition-all duration-500 cursor-default italic tracking-tighter"
+                  className="text-4xl md:text-5xl font-black text-slate-200 hover:text-blue-600 transition-colors duration-500 cursor-default tracking-tighter"
                 >
                   {brand}
                 </span>
               ))}
             </motion.div>
-            {/* Edge Fades */}
-            <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-[#020617] to-transparent z-10" />
-            <div className="absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-[#020617] to-transparent z-10" />
+            {/* Edge Masks */}
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
           </div>
         </div>
 
-        {/* --- DYNAMIC DATA WIDGETS --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* --- DATA WIDGETS --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {STATS.map((stat, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.7 }}
-              className="relative group"
+              transition={{ delay: i * 0.1 }}
+              className="group"
             >
-              {/* Card Glow */}
-              <div className={cn(
-                "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-[3rem] blur-2xl -z-10 bg-white/5",
-              )} />
-              
-              <div className="h-full p-10 rounded-[3rem] bg-slate-900/40 backdrop-blur-xl border border-white/5 group-hover:border-white/20 transition-all duration-500 shadow-2xl">
-                <div className="flex justify-between items-start mb-10">
-                  <div className="p-4 rounded-2xl bg-slate-950 border border-white/10 text-white group-hover:text-cyan-400 group-hover:border-cyan-500/30 transition-all duration-500">
-                    <stat.icon className="w-6 h-6" />
+              <div className="h-full p-1 w-full bg-slate-100 rounded-[2.5rem] transition-all duration-500 group-hover:bg-slate-200">
+                <div className="h-full p-8 rounded-[2.3rem] bg-white border border-slate-100 flex flex-col justify-between overflow-hidden relative shadow-sm transition-all duration-500 group-hover:shadow-xl">
+                  
+                  {/* Icon & Label */}
+                  <div className="flex justify-between items-start mb-12">
+                    <div className={cn("p-4 rounded-2xl text-white shadow-lg transition-transform duration-500 group-hover:scale-110", stat.color)}>
+                      <stat.icon className="w-6 h-6" />
+                    </div>
+                    <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 border border-blue-100">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
+                      <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest">Verified</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[9px] font-black text-emerald-500 uppercase">Live</span>
-                  </div>
-                </div>
 
-                <div className="space-y-2">
-                  <div className="flex items-baseline gap-1">
-                    <motion.span 
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      className="text-6xl font-black text-white tracking-tighter italic"
-                    >
-                      {stat.value}
-                    </motion.span>
-                    <span className="text-3xl font-black text-cyan-400">{stat.suffix}</span>
+                  {/* Value */}
+                  <div className="relative z-10">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-7xl font-black text-slate-900 tracking-tighter leading-none">
+                        {stat.value}
+                      </span>
+                      <span className={cn("text-3xl font-black italic uppercase", stat.color.replace('bg-', 'text-'))}>
+                        {stat.suffix}
+                      </span>
+                    </div>
+                    <p className="mt-2 text-xs font-black text-slate-400 uppercase tracking-[0.2em]">{stat.label}</p>
                   </div>
-                  <p className="text-xs font-black text-slate-500 uppercase tracking-[0.2em]">{stat.label}</p>
-                </div>
 
-                {/* Animated Data Line */}
-                <div className="mt-10 h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    whileInView={{ width: "100%" }}
-                    transition={{ duration: 2, delay: 0.5, ease: "circOut" }}
-                    className={cn("h-full bg-gradient-to-r", stat.color)} 
-                  />
+                  {/* Background Decor (Hover Only) */}
+                  <div className={cn("absolute -bottom-8 -right-8 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700", stat.color)} />
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Floating Endorsement */}
+        {/* --- SOCIAL PROOF ACCELERATOR --- */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          className="mt-24 flex justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="mt-20 flex justify-center"
         >
-          <div className="inline-flex items-center gap-6 px-10 py-5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-            <div className="flex -space-x-3">
-              {[1,2,3,4].map(i => (
-                <div key={i} className="w-10 h-10 rounded-full border-2 border-slate-900 bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center">
-                   <Star className="w-4 h-4 text-white fill-current" />
+          <div className="group relative flex flex-col md:flex-row items-center gap-8 px-12 py-8 rounded-[3rem] bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-50">
+            <div className="flex -space-x-4">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <div 
+                  key={i} 
+                  className="w-12 h-12 rounded-full border-4 border-white bg-slate-200 flex items-center justify-center overflow-hidden transition-transform group-hover:translate-x-1"
+                  style={{ zIndex: 5 - i }}
+                >
+                  <div className="w-full h-full bg-gradient-to-tr from-slate-200 to-slate-400 flex items-center justify-center">
+                    <Star className="w-4 h-4 text-white fill-current" />
+                  </div>
                 </div>
               ))}
             </div>
-            <p className="text-sm font-bold text-slate-300">
-              Ranked <span className="text-white font-black italic">#1 CREATOR ACCELERATOR</span> by <span className="text-cyan-400">Forbes Tech</span>
-            </p>
-            <ArrowUpRight className="w-5 h-5 text-slate-500" />
+            
+            <div className="text-center md:text-left">
+              <p className="text-lg font-bold text-slate-600 leading-tight">
+                Ranked <span className="text-slate-900 font-black italic">#1 CREATOR GROWTH ENGINE</span>
+              </p>
+              <p className="text-sm font-medium text-slate-400">Featured in Forbes, TechCrunch & Wired</p>
+            </div>
+
+            <div className="h-12 w-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-900 group-hover:bg-blue-600 group-hover:text-white transition-all">
+              <ArrowUpRight className="w-5 h-5" />
+            </div>
           </div>
         </motion.div>
       </div>
