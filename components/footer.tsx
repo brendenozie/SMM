@@ -132,7 +132,7 @@ export function Footer() {
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-300">Engineered by</span>
             <div className="flex items-center gap-2 px-4 py-2 bg-slate-900 rounded-xl">
               <Command className="w-3.5 h-3.5 text-blue-400" />
-              <span className="text-xs font-black text-white italic tracking-tighter">Gemini v3</span>
+              <span className="text-xs font-black text-white italic tracking-tighter">SMM</span>
             </div>
           </div>
         </div>
