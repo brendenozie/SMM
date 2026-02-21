@@ -3,39 +3,39 @@ import type { NextRequest } from 'next/server';
 
 
 export function middleware(request: NextRequest) {
-   if (request.nextUrl.pathname.startsWith('/api/webhooks/whop')) {
-    return NextResponse.next();
-  }
+  //  if (request.nextUrl.pathname.startsWith('/api/webhooks/whop')) {
+  //   return NextResponse.next();
+  // }
 
-  const { pathname } = request.nextUrl;
+  // const { pathname } = request.nextUrl;
 
 
 
 
   // Get the pathname of the request (e.g. /, /protected, /api/auth)
-  const path = request.nextUrl.pathname;
+  // const path = request.nextUrl.pathname;
 
 
 
   // Define protected routes
-  const protectedRoutes = [
-    '/charts',
-    '/dashboard',
-    '/signals',
-    '/news',
-    '/insights',
-    '/subscription',
-    '/profile',
-  ];
+  // const protectedRoutes = [
+  //   '/charts',
+  //   '/dashboard',
+  //   '/signals',
+  //   '/news',
+  //   '/insights',
+  //   '/subscription',
+  //   '/profile',
+  // ];
 
   // Define auth routes (login, register, etc.)
-  const authRoutes = [
-    '/login',
-    '/register',
-    '/forgot-password',
-    '/reset-password',
-    '/verify-email',
-  ];
+  // const authRoutes = [
+  //   '/login',
+  //   '/register',
+  //   '/forgot-password',
+  //   '/reset-password',
+  //   '/verify-email',
+  // ];
 
   // if (request.nextUrl.pathname.startsWith('/api/whop')) {
   //   return NextResponse.next();
@@ -63,25 +63,25 @@ export function middleware(request: NextRequest) {
   // }
 
     // 1. Check if the URL starts with /ref/
-  if (pathname.startsWith('/ref/')) {
-    const segments = pathname.split('/');
-    const refCode = segments[segments.length - 1]; // Get 'rp-98fd17'
+  // if (pathname.startsWith('/ref/')) {
+  //   const segments = pathname.split('/');
+  //   const refCode = segments[segments.length - 1]; // Get 'rp-98fd17'
 
-    if (refCode) {
-      // 2. Create a redirect response to the register page
-      const response = NextResponse.redirect(new URL('/register', request.url));
+  //   if (refCode) {
+  //     // 2. Create a redirect response to the register page
+  //     const response = NextResponse.redirect(new URL('/register', request.url));
 
-      // 3. Set the cookie in the response object
-      response.cookies.set('refereer_code', refCode, {
-        maxAge: 60 * 60 * 24 * 7, // 7 days
-        path: '/',
-        httpOnly: false, // Set to false so your Client Component can read it
-        sameSite: 'lax',
-      });
+  //     // 3. Set the cookie in the response object
+  //     response.cookies.set('refereer_code', refCode, {
+  //       maxAge: 60 * 60 * 24 * 7, // 7 days
+  //       path: '/',
+  //       httpOnly: false, // Set to false so your Client Component can read it
+  //       sameSite: 'lax',
+  //     });
 
-      return response;
-    }
-  }
+  //     return response;
+  //   }
+  // }
 
   // For all other routes, continue
   return NextResponse.next();
